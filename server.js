@@ -6,9 +6,7 @@ const OpenAIApi = require('openai');
 const app = express();
 
 const corsOptions = {
-    origin: '*', 
-    methods: ['GET'],
-    allowedHeaders: ['Content-Type'],
+    origin: '*'
 };
   
 app.use(cors(corsOptions));
@@ -19,7 +17,7 @@ const openai = new OpenAIApi({
   apiKey: process.env.OPENAI_API_KEY
 });
 
-app.get('/get-message', async (req, res) => {
+app.post('/get-message', async (req, res) => {
     try {
         const chatCompletion = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
