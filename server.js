@@ -1,8 +1,17 @@
 const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
 const OpenAIApi = require('openai');
 
 const app = express();
+
+const corsOptions = {
+    origin: '*', 
+    methods: ['GET'],
+    allowedHeaders: ['Content-Type'],
+};
+  
+app.use(cors(corsOptions));
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
